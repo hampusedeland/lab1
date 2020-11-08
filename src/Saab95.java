@@ -1,14 +1,10 @@
 import java.awt.*;
 
-public class Saab95{
+public class Saab95 extends  Car implements Movable{
 
-    public boolean turboOn;
-    public int nrDoors; // Number of doors on the car
-    public double enginePower; // Engine power of the car
-    public double currentSpeed; // The current speed of the car
-    public Color color; // Color of the car
-    public String modelName; // The car model name
-    
+
+
+
     public Saab95(){
         nrDoors = 2;
         color = Color.red;
@@ -16,41 +12,8 @@ public class Saab95{
 	    turboOn = false;
         modelName = "Saab95";
         stopEngine();
-    }
-    
-    public int getNrDoors(){
-        return nrDoors;
-    }
-    public double getEnginePower(){
-        return enginePower;
-    }
 
-    public double getCurrentSpeed(){
-        return currentSpeed;
-    }
 
-    public Color getColor(){
-        return color;
-    }
-
-    public void setColor(Color clr){
-	    color = clr;
-    }
-
-    public void startEngine(){
-	    currentSpeed = 0.1;
-    }
-
-    public void stopEngine(){
-	    currentSpeed = 0;
-    }
-
-    public void setTurboOn(){
-	    turboOn = true;
-    }
-
-    public void setTurboOff(){
-	    turboOn = false;
     }
     
     public double speedFactor(){
@@ -76,4 +39,84 @@ public class Saab95{
     public void brake(double amount){
         decrementSpeed(amount);
     }
+    public static void main(String args[]){
+        Saab95 snabbisen = new Saab95();
+        snabbisen.startEngine();
+        snabbisen.setCurrentdirection("west");
+        System.out.println(snabbisen.getNrDoors());
+
+
+
+        System.out.println(snabbisen.getCurrentdirection());
+        System.out.println(snabbisen.position());
+
+        snabbisen.move();
+        snabbisen.move();
+
+
+        System.out.println(snabbisen.position());
+
+        snabbisen.move();
+        snabbisen.move();
+        System.out.println(snabbisen.position());
+
+        snabbisen.turnRight();
+        snabbisen.move();
+        snabbisen.move();
+        System.out.println(snabbisen.position());
+
+    }
+
+    @Override
+    public void move() {
+        if(getCurrentdirection().equals("north")){
+           setY(getY()+getCurrentSpeed());
+        }
+        if(getCurrentdirection().equals("south")){
+            setY(getY()-getCurrentSpeed());
+        }
+        if(getCurrentdirection().equals("west")){
+            setX(getX()-getCurrentSpeed());
+        }
+        if(getCurrentdirection().equals("east")){
+            setX(getX()+getCurrentSpeed());
+        }
+
+    }
+
+    @Override
+    public void turnLeft() {
+        if(getCurrentdirection().equals("north")){
+            setCurrentdirection("west");
+        }
+        if(getCurrentdirection().equals("west")){
+            setCurrentdirection("south");
+        }
+        if(getCurrentdirection().equals("south")){
+            setCurrentdirection("east");
+        }
+        if(getCurrentdirection().equals("east")){
+            setCurrentdirection("north");
+        }
+    }
+
+    @Override
+    public void turnRight() {
+        if(getCurrentdirection().equals("north")){
+            setCurrentdirection("east");
+       }
+        if(getCurrentdirection().equals("east")){
+            setCurrentdirection("south");
+        }
+        if(getCurrentdirection().equals("south")){
+            setCurrentdirection("west");
+        }
+        if(getCurrentdirection().equals("west")){
+            setCurrentdirection("north");
+        }
+
+    }
+
+
+
 }
