@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class Saab95 extends  Car implements Movable{
+public class Saab95 extends  Car {
 
 
 
@@ -46,77 +46,19 @@ public class Saab95 extends  Car implements Movable{
         System.out.println(snabbisen.getNrDoors());
 
 
+        snabbisen.move();
+        snabbisen.move();
+        snabbisen.move();
 
         System.out.println(snabbisen.getCurrentdirection());
         System.out.println(snabbisen.position());
-
-        snabbisen.move();
-        snabbisen.move();
-
-
+        snabbisen.turnLeft();
         System.out.println(snabbisen.position());
-
         snabbisen.move();
-        snabbisen.move();
-        System.out.println(snabbisen.position());
-
-        snabbisen.turnRight();
         snabbisen.move();
         snabbisen.move();
         System.out.println(snabbisen.position());
 
     }
-
-    @Override
-    public void move() {
-        if(getCurrentdirection().equals("north")){
-           setY(getY()+getCurrentSpeed());
-        }
-        if(getCurrentdirection().equals("south")){
-            setY(getY()-getCurrentSpeed());
-        }
-        if(getCurrentdirection().equals("west")){
-            setX(getX()-getCurrentSpeed());
-        }
-        if(getCurrentdirection().equals("east")){
-            setX(getX()+getCurrentSpeed());
-        }
-
-    }
-
-    @Override
-    public void turnLeft() {
-        if(getCurrentdirection().equals("north")){
-            setCurrentdirection("west");
-        }
-        if(getCurrentdirection().equals("west")){
-            setCurrentdirection("south");
-        }
-        if(getCurrentdirection().equals("south")){
-            setCurrentdirection("east");
-        }
-        if(getCurrentdirection().equals("east")){
-            setCurrentdirection("north");
-        }
-    }
-
-    @Override
-    public void turnRight() {
-        if(getCurrentdirection().equals("north")){
-            setCurrentdirection("east");
-       }
-        if(getCurrentdirection().equals("east")){
-            setCurrentdirection("south");
-        }
-        if(getCurrentdirection().equals("south")){
-            setCurrentdirection("west");
-        }
-        if(getCurrentdirection().equals("west")){
-            setCurrentdirection("north");
-        }
-
-    }
-
-
 
 }

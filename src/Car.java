@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class Car {
+public class Car implements Movable {
     protected int nrDoors; // Number of doors on the car
     protected double enginePower; // Engine power of the car
     protected double currentSpeed; // The current speed of the car
@@ -88,6 +88,56 @@ public class Car {
 
     public void stopEngine(){
         currentSpeed = 0;
+    }
+
+    @Override
+    public void move() {
+        if(getCurrentdirection().equals("north")){
+            setY(getY()+getCurrentSpeed());
+        }
+        if(getCurrentdirection().equals("south")){
+            setY(getY()-getCurrentSpeed());
+        }
+        if(getCurrentdirection().equals("west")){
+            setX(getX()-getCurrentSpeed());
+        }
+        if(getCurrentdirection().equals("east")){
+            setX(getX()+getCurrentSpeed());
+        }
+
+    }
+
+    @Override
+    public void turnLeft() {
+        if(getCurrentdirection().equals("north")){
+            setCurrentdirection("west");
+        }
+        else if(getCurrentdirection().equals("west")){
+            setCurrentdirection("south");
+        }
+        else if(getCurrentdirection().equals("south")){
+            setCurrentdirection("east");
+        }
+        else if(getCurrentdirection().equals("east")){
+            setCurrentdirection("north");
+        }
+    }
+
+    @Override
+    public void turnRight() {
+        if(getCurrentdirection().equals("north")){
+            setCurrentdirection("east");
+        }
+        else if(getCurrentdirection().equals("east")){
+            setCurrentdirection("south");
+        }
+        else if(getCurrentdirection().equals("south")){
+            setCurrentdirection("west");
+        }
+        else if(getCurrentdirection().equals("west")){
+            setCurrentdirection("north");
+        }
+
     }
 
 
