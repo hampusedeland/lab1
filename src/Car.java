@@ -90,6 +90,8 @@ public class Car implements Movable {
         currentSpeed = 0;
     }
 
+
+
     @Override
     public void move() {
         if(getCurrentdirection().equals("north")){

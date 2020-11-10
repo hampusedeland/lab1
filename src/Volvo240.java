@@ -30,12 +30,20 @@ public class Volvo240 extends Car implements Movable{
 
     // TODO fix this method according to lab pm
     public void gas(double amount){
-        incrementSpeed(amount);
+        if(amount<=1 && amount>=0){
+            if(amount>=getCurrentSpeed()) {
+                incrementSpeed(amount);
+            }
+        }
     }
 
     // TODO fix this method according to lab pm
     public void brake(double amount){
-        decrementSpeed(amount);
+        if(amount<=1 && amount>=0) {
+            if(amount<=getCurrentSpeed()) {
+                decrementSpeed(amount);
+            }
+        }
     }
 
     @Override
