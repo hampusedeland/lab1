@@ -57,6 +57,15 @@ public class Saab95 extends  Car {
         System.out.println(snabbisen.getCurrentSpeed());
         snabbisen.brake(0.9);
         System.out.println(snabbisen.getCurrentSpeed());
+        snabbisen.move();
+        snabbisen.turnLeft();
+        snabbisen.turnRight();
+        snabbisen.getEnginePower();
+        snabbisen.position();
+        snabbisen.setColor(Color.BLACK);
+        snabbisen.setTurboOn();
+        snabbisen.move();
+        snabbisen.setTurboOff();
 
 
     }

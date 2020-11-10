@@ -14,20 +14,6 @@ public class Car implements Movable {
     public String currentdirection;
     public String currentpos;
 
-
-    public double getX0() {
-        return x0;
-    }
-    public String position(){
-       return currentpos = "["+ getX() + " " + getY() + "]" + " Facing:" + getCurrentdirection() ;
-    }
-
-    public double getY0() {
-        return y0;
-    }
-
-    public void startPos(int x0, int y0) { }
-
     public double getX() {
         return x;
     }
@@ -44,8 +30,6 @@ public class Car implements Movable {
         this.y = y;
     }
 
-
-
     public String getCurrentdirection() {
         return currentdirection;
     }
@@ -54,10 +38,10 @@ public class Car implements Movable {
         this.currentdirection = currentdirection;
     }
 
-
     public int getNrDoors(){
         return nrDoors;
     }
+
     public double getEnginePower(){
         return enginePower;
     }
@@ -90,7 +74,9 @@ public class Car implements Movable {
         currentSpeed = 0;
     }
 
-
+    public String position(){
+        return currentpos = "["+ getX() + " " + getY() + "]" + " Facing:" + getCurrentdirection() ;
+    }
 
     @Override
     public void move() {

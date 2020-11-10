@@ -1,11 +1,17 @@
 import java.awt.*;
 
+/**
+ * Representerar en Volvo, som är en Car(bil) och implementerar interfacet
+ */
 public class Volvo240 extends Car implements Movable{
 
     public final static double trimFactor = 1.25;
 
 
-    
+    /**
+     * Default Konstruktor, som anropar Car, Och "bygger en default Volvo
+     * @param
+     */
     public Volvo240(){
         nrDoors = 4;
         color = Color.black;
@@ -13,18 +19,27 @@ public class Volvo240 extends Car implements Movable{
         modelName = "Volvo240";
         stopEngine();
     }
-    
 
 
+
+    /**
+     * Beskriver hur farten påverkan av "trimfactor"
+     */
     public double speedFactor(){
         return enginePower * 0.01 * trimFactor;
     }
-
+    /**
+     * metoden anropas av Gas senare, och uppdaterar hastigheten.
+     *Ser till så att hastigheten är realistiskt
+     */
     public void incrementSpeed(double amount){
         if(getCurrentSpeed()>=0 && getCurrentSpeed()+ amount<=getEnginePower()) {
             currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, enginePower);
         }
     }
+    /**
+     * används för att uppdatera hastigheten vid en minskning, anropas av Break
+     */
 
     public void decrementSpeed(double amount){
         if(getCurrentSpeed() - amount >=0 && getCurrentSpeed() <=getEnginePower()) {
@@ -32,7 +47,9 @@ public class Volvo240 extends Car implements Movable{
         }
     }
 
-    // TODO fix this method according to lab pm
+    /**
+     * Tar en amount mellan 0-1
+     */
     public void gas(double amount){
         if(amount<=1 && amount>=0){
                 incrementSpeed(amount);
@@ -46,6 +63,10 @@ public class Volvo240 extends Car implements Movable{
 
         }
     }
+    /**
+     * Default Konstruktor, som anropar Car, Och "bygger en default Volvo
+     * @param
+     */
     public static void main(String args[]){
         Volvo240 volvon = new Volvo240();
         volvon.startEngine();
